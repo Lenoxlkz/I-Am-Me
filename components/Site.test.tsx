@@ -3,7 +3,11 @@ import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Site from './Site';
 
-beforeEach(() => localStorage.clear());
+// jsdom reporta navigator.language = 'en-US', así que fijamos el idioma guardado.
+beforeEach(() => {
+  localStorage.clear();
+  localStorage.setItem('lang', 'es');
+});
 afterEach(cleanup);
 
 const profile = { login: 'u', name: 'Ana', avatar: 'https://x/y.png', url: 'https://github.com/u' };
@@ -13,6 +17,12 @@ describe('Site', () => {
     render(<Site repos={[]} profile={profile} user="u" />);
     expect(screen.getByRole('heading', { level: 1 }).textContent).toContain('Código bonito.');
     expect(screen.getByText('Ana')).toBeTruthy();
+  });
+
+  it('sin idioma guardado, usa el del navegador (inglés en jsdom)', () => {
+    localStorage.clear();
+    render(<Site repos={[]} profile={profile} user="u" />);
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toContain('Pretty code.');
   });
 
   it('cambia de idioma, lo recuerda y actualiza <html lang>', async () => {
