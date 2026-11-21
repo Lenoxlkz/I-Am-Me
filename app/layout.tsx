@@ -11,7 +11,13 @@ export const metadata: Metadata = {
   description: `Proyectos públicos de ${site.user} en GitHub, ordenados y siempre al día.`,
 };
 
-export const viewport: Viewport = { themeColor: '#F7F0FB' };
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F7F0FB' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+  colorScheme: 'light dark',
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
