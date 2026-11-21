@@ -80,7 +80,8 @@ describe('Projects', () => {
 
   it('cada tarjeta tiene sus metadatos accesibles', () => {
     renderIt([repos[1]]);
-    expect(screen.getByText(/estrellas/)).toBeTruthy();
-    expect(screen.getByText(/forks/)).toBeTruthy();
+    // Texto exacto: "Más estrellas" (botón de orden) no debe contar.
+    expect(screen.getByText('estrellas')).toBeTruthy();
+    expect(screen.getByText('forks')).toBeTruthy();
   });
 });
