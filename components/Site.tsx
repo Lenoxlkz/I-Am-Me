@@ -48,7 +48,6 @@ export default function Site({ repos, profile, user, pinned = [] }: Props) {
         <Hero t={t} githubUrl={githubUrl} />
         <Projects repos={repos} pinned={pinned} t={t} lang={lang} />
       </main>
-      <footer className="foot"><p>{t.footer}</p></footer>
     </>
   );
 }
