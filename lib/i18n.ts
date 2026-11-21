@@ -29,7 +29,6 @@ const es = {
   clear: 'Limpiar filtros',
   noRepos: 'Todavía no hay proyectos públicos',
   noReposHint: 'Esta página se reconstruye sola cada día. Vuelve pronto.',
-  footer: 'Hecho a mano y publicado con GitHub Pages.',
 };
 
 export type Dict = Record<keyof typeof es, string>;
@@ -63,7 +62,6 @@ const en: Dict = {
   clear: 'Clear filters',
   noRepos: 'No public projects yet',
   noReposHint: 'This page rebuilds itself every day. Check back soon.',
-  footer: 'Handmade and published with GitHub Pages.',
 };
 
 export const dict: Record<Lang, Dict> = { es, en };
